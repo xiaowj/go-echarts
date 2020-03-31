@@ -8,6 +8,14 @@ type seriesOptser interface {
 type LabelTextOpts struct {
 	// 是否显示标签
 	Show bool `json:"show"`
+	//坐标轴刻度标签的显示间隔，在类目轴中有效。
+	//默认会采用标签不重叠的策略间隔显示标签。
+	//可以设置成 0 强制显示所有标签。
+	//如果设置为 1，表示『隔一个标签显示一个标签』，如果值为 2，表示隔两个标签显示一个标签，以此类推。
+	Interval int `json:"interval,omitempty"`
+	//刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间重叠。
+	//旋转的角度从 -90 度到 90 度。
+	Rotate   int `json:"rotate,omitempty"`
 	// 文字的颜色
 	Color string `json:"color,omitempty"`
 	// 标签的位置

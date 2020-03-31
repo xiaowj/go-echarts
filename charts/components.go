@@ -69,6 +69,14 @@ type LegendOpts struct {
 
 func (LegendOpts) markGlobal() {}
 
+type GridOpts struct {
+	ContainLabel bool `json:"containLabel,omitempty",default:"true"`
+}
+
+func (GridOpts) markGlobal() {
+
+}
+
 // TooltipOpts is the option set for a tooltip component.
 type TooltipOpts struct {
 	// 是否显示提示框
@@ -78,6 +86,9 @@ type TooltipOpts struct {
 	// "axis": 坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
 	// "none": 什么都不触发。
 	Trigger string `json:"trigger,omitempty"`
+	//坐标轴指示器配置项。
+	//https://echarts.apache.org/zh/option.html#tooltip.axisPointer
+	AxisPointer AxisPointerOpts `json:"axisPointer"`
 	// 提示框触发的条件，可选：
 	// "mousemove": 鼠标移动时触发。
 	// "click": 鼠标点击时触发。
@@ -111,6 +122,15 @@ type TooltipOpts struct {
 	//    percent: number,		// 饼图的百分比
 	// }
 	Formatter string `json:"formatter,omitempty"`
+}
+
+type AxisPointerOpts struct {
+	//指示器类型。
+	//'line' 直线指示器
+	//'shadow' 阴影指示器
+	//'none' 无指示器
+	//'cross' 十字准星指示器。其实是种简写，表示启用两个正交的轴的 axisPointer。
+	Type string `json:"type,omitempty",default:"line"`
 }
 
 func (TooltipOpts) markGlobal() {}
@@ -309,6 +329,12 @@ type XAxisOpts struct {
 	SplitArea SplitAreaOpts `json:"splitArea,omitempty"`
 	// X 轴在 grid 区域中的分隔线配置项
 	SplitLine SplitLineOpts `json:"splitLine,,omitempty"`
+	//强制设置坐标轴分割间隔。
+	//因为 splitNumber 是预估的值，实际根据策略计算出来的刻度可能无法达到想要的效果，这时候可以使用 interval 配合 min、max 强制设定刻度划分，一般不建议使用。
+	//无法在类目轴中使用。在时间轴（type: 'time'）中需要传时间戳，在对数轴（type: 'log'）中需要传指数值。
+	Interval int `json:"interval,omitempty"`
+	//坐标轴刻度标签的相关设置
+	AxisLabel LabelTextOpts `json:"axisLabel,omitempty"`
 }
 
 func (XAxisOpts) markGlobal() {}

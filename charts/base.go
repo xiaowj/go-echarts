@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/datatypes"
+	"github.com/xiaowj/go-echarts/datatypes"
 	"regexp"
 )
 
@@ -115,6 +115,7 @@ func (ColorOpts) markSeries() {}
 type BaseOpts struct {
 	InitOpts              // 图形初始化配置项
 	LegendOpts            // 图例组件配置项
+	GridOpts              //grid组件配置项
 	legends               []string
 	TooltipOpts                    // 提示框组件配置项
 	ToolboxOpts                    // 工具箱组件配置项
@@ -191,6 +192,8 @@ func (opt *BaseOpts) setBaseGlobalOptions(options ...globalOptser) {
 			opt.validateInitOpt()
 		case TitleOpts:
 			opt.TitleOpts = option.(TitleOpts)
+		case GridOpts:
+			opt.GridOpts = option.(GridOpts)
 		case ToolboxOpts:
 			opt.ToolboxOpts = option.(ToolboxOpts)
 		case TooltipOpts:

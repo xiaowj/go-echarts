@@ -1,10 +1,10 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/datatypes"
+	"github.com/xiaowj/go-echarts/datatypes"
 	"io"
 
-	"github.com/go-echarts/go-echarts/datasets"
+	"github.com/xiaowj/go-echarts/datasets"
 )
 
 // Map represents a map chart.
@@ -53,5 +53,5 @@ func (c *Map) validateOpts() {
 func (c *Map) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", []string{}, w...)
+	return renderToWriter(c, "chart", nil, []string{}, w...)
 }

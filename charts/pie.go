@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/datatypes"
+	"github.com/xiaowj/go-echarts/datatypes"
 	"io"
 )
 
@@ -77,5 +77,5 @@ func (c *Pie) validateOpts() {
 func (c *Pie) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", []string{}, w...)
+	return renderToWriter(c, "chart", nil, []string{}, w...)
 }

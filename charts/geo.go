@@ -2,11 +2,11 @@ package charts
 
 import (
 	"fmt"
-	"github.com/go-echarts/go-echarts/datatypes"
+	"github.com/xiaowj/go-echarts/datatypes"
 	"io"
 	"log"
 
-	"github.com/go-echarts/go-echarts/datasets"
+	"github.com/xiaowj/go-echarts/datasets"
 )
 
 // GeoComponentOpts is the option set for geo component.
@@ -82,5 +82,5 @@ func (c *Geo) validateOpts() {
 func (c *Geo) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", []string{}, w...)
+	return renderToWriter(c, "chart", nil, []string{}, w...)
 }

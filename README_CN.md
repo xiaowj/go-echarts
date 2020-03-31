@@ -32,7 +32,7 @@
 ### 🔰 安装
 
 ```shell
-$ go get -u github.com/go-echarts/go-echarts/...
+$ go get -u github.com/xiaowj/go-echarts/...
 ```
 
 ### ✨ 特性
@@ -97,7 +97,7 @@ $ go get -u github.com/go-echarts/go-echarts/...
 
 运行 example/main.go 可预览所有示例
 ```shell
-$ cd your/gopath/src/github.com/go-echarts/go-echarts/example
+$ cd your/gopath/src/github.com/xiaowj/go-echarts/example
 $ go build .
 $ ./example
 ```
